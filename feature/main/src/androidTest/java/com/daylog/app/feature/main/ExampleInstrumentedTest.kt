@@ -1,4 +1,4 @@
-package com.gy25m.daylog
+package com.daylog.app.feature.main
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.gy25m.daylog", appContext.packageName)
+        assertEquals("com.daylog.app.feature.main.test", appContext.packageName)
     }
 }

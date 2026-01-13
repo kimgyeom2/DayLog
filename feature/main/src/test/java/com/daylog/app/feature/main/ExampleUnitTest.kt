@@ -1,4 +1,4 @@
-package com.gy25m.daylog
+package com.daylog.app.feature.main
 
 import org.junit.Test
 

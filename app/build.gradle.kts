@@ -1,48 +1,49 @@
+import com.daylog.app.filterProject
+
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.daylog.android.application)
+    id("com.google.android.gms.oss-licenses-plugin")
+    alias(libs.plugins.baselineprofile)
+    alias(libs.plugins.roborazzi.plugin)
 }
 
 android {
-    namespace = "com.gy25m.daylog"
-    compileSdk = 36
+    namespace = "com.daylog.app"
 
     defaultConfig {
-        applicationId = "com.gy25m.daylog"
-        minSdk = 30
-        targetSdk = 36
+        applicationId = "com.daylog.app"
         versionCode = 1
         versionName = "1.0"
+    }
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("debug")
         }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
+
+        create("benchmark") {
+            matchingFallbacks.add("release")
+            signingConfig = signingConfigs.getByName("debug")
+            isDebuggable = false
+        }
     }
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    rootProject.subprojects.filterProject {
+        if (it.name.contains("baselineprofile")) {
+            baselineProfile(it)
+        } else if (it.name.contains("testing")) {
+            testImplementation(it)
+        } else {
+            implementation(it)
+        }
+    }
+    implementation(libs.androidx.profileinstaller)
 }
