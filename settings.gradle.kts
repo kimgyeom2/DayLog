@@ -38,6 +38,13 @@ include(
     ":app-config:app-config-api",
 )
 
+// core
+include(
+    ":core:designsystem",
+    ":core:domain",
+    ":core:data"
+)
+
 // Feature
 include(
     ":feature:main"
