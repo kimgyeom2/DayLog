@@ -4,10 +4,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <application>
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:configChanges="uiMode"
             android:theme="@style/Theme.DayLog.TransparentSystemBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
-
 </manifest>

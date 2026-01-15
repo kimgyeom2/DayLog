@@ -47,5 +47,7 @@ include(
 
 // Feature
 include(
-    ":feature:main"
+    ":feature:main",
+    ":feature:login"
 )
+
