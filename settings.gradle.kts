@@ -42,7 +42,9 @@ include(
 include(
     ":core:designsystem",
     ":core:domain",
-    ":core:data"
+    ":core:data",
+    ":core:common",
+    ":core:navigation"
 )
 
 // Feature
@@ -50,4 +52,6 @@ include(
     ":feature:main",
     ":feature:login"
 )
+
+
 

@@ -99,6 +99,8 @@ test-junit5 = "5.12.2"
 material = "1.13.0"
 activity = "1.12.2"
 constraintlayout = "2.2.1"
+appcompat = "1.7.1"
+viewbinding = "9.0.0"
 
 [libraries]
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
@@ -177,6 +179,8 @@ glance-tools-appwidget-host = { group = "com.google.android.glance.tools", name 
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-viewbinding = { group = "androidx.databinding", name = "viewbinding", version.ref = "viewbinding" }
 
 [bundles]
 

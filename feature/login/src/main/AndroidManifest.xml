@@ -6,6 +6,7 @@
         <activity
             android:name=".LoginActivity"
             android:configChanges="uiMode"
+            android:exported="true"
             android:theme="@style/Theme.DayLog.TransparentSystemBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -12,56 +12,50 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:src="@drawable/happy"
+        android:layout_marginTop="100dp"
+        android:contentDescription="@string/logo_login"
+        android:src="@drawable/happy2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="40dp"
-        android:layout_marginTop="70dp"
+        style="@style/Login_EditText"
+        android:layout_marginTop="60dp"
         android:autofillHints="username"
-        android:background="@drawable/round_square"
         android:hint="@string/input_id"
-        android:inputType="text"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/et_pw"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="40dp"
+        style="@style/Login_EditText"
         android:layout_marginTop="20dp"
         android:autofillHints="password"
-        android:background="@drawable/round_square"
         android:hint="@string/input_pw"
-        android:inputType="text"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_id" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_square_pressed"
-        android:contentDescription="@string/input_id"
-        android:padding="10dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/foot_print"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_join"
+        style="@style/Login_Btn"
+        android:layout_marginTop="25dp"
+        android:contentDescription="@string/btn_login"
+        android:text="@string/btn_join"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/et_pw"
         app:layout_constraintTop_toBottomOf="@+id/et_pw" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_login"
+        style="@style/Login_Btn"
+        android:contentDescription="@string/btn_login"
+        android:text="@string/btn_login"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/et_pw"
+        app:layout_constraintTop_toTopOf="@+id/btn_join" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

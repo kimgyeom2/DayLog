@@ -46,4 +46,6 @@ dependencies {
         }
     }
     implementation(libs.androidx.profileinstaller)
+    implementation(project(":feature:login"))
+    implementation(project(":feature:main"))
 }
