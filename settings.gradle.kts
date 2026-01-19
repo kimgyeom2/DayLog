@@ -50,7 +50,10 @@ include(
 // Feature
 include(
     ":feature:main",
-    ":feature:login"
+    ":feature:login",
+    ":feature:home",
+    ":feature:calendar",
+    ":feature:profile"
 )
 
 

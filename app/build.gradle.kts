@@ -48,4 +48,6 @@ dependencies {
     implementation(libs.androidx.profileinstaller)
     implementation(project(":feature:login"))
     implementation(project(":feature:main"))
+    implementation(libs.androidx.navigation.runtime.android)
+    implementation(libs.appcompat)
 }
