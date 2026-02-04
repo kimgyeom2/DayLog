@@ -5,6 +5,7 @@ plugins {
     id("com.google.android.gms.oss-licenses-plugin")
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.roborazzi.plugin)
+    alias(libs.plugins.android.application)
 }
 
 android {
@@ -50,4 +51,5 @@ dependencies {
     implementation(project(":feature:main"))
     implementation(libs.androidx.navigation.runtime.android)
     implementation(libs.appcompat)
+    "baselineProfile"(project(":app:baselineprofile"))
 }

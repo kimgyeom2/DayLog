@@ -26,6 +26,7 @@
             <option value="$PROJECT_DIR$/app-config" />
             <option value="$PROJECT_DIR$/app-config/app-config" />
             <option value="$PROJECT_DIR$/app-config/app-config-api" />
+            <option value="$PROJECT_DIR$/app/baselineprofile" />
             <option value="$PROJECT_DIR$/build-logic" />
             <option value="$PROJECT_DIR$/build-logic/convention" />
             <option value="$PROJECT_DIR$/core" />

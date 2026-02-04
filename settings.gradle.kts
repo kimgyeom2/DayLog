@@ -58,3 +58,4 @@ include(
 
 
 
+include(":app:baselineprofile")
