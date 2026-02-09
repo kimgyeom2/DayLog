@@ -27,12 +27,6 @@ android {
         getByName("release") {
             signingConfig = signingConfigs.getByName("debug")
         }
-
-        create("benchmark") {
-            matchingFallbacks.add("release")
-            signingConfig = signingConfigs.getByName("debug")
-            isDebuggable = false
-        }
     }
 }
 
@@ -51,5 +45,5 @@ dependencies {
     implementation(project(":feature:main"))
     implementation(libs.androidx.navigation.runtime.android)
     implementation(libs.appcompat)
-    "baselineProfile"(project(":app:baselineprofile"))
+    "baselineProfile"(project(":baselineprofile"))
 }

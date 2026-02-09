@@ -1,4 +1,4 @@
-package com.gy25m.baselineprofile
+package com.daylog.baselineprofile
 
 import androidx.benchmark.macro.BaselineProfileMode
 import androidx.benchmark.macro.CompilationMode
@@ -23,7 +23,7 @@ import org.junit.runner.RunWith
  * Studio as an instrumentation test, or run all benchmarks for a variant, for example benchmarkRelease,
  * with this Gradle task:
  * ```
- * ./gradlew :app:baselineprofile:connectedBenchmarkReleaseAndroidTest
+ * ./gradlew :baselineprofile:connectedBenchmarkReleaseAndroidTest
  * ```
  *
  * You should run the benchmarks on a physical device, not an Android emulator, because the

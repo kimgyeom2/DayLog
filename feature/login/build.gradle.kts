@@ -17,4 +17,5 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     implementation(project(":core:navigation"))
+    implementation(project(":core:domain"))
 }

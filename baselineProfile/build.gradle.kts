@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.gy25m.baselineprofile"
+    namespace = "com.daylog.baselineprofile"
     compileSdk = 36
 
     compileOptions {
