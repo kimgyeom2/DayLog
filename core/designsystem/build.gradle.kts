@@ -2,6 +2,7 @@ import com.daylog.app.setNamespace
 
 plugins {
     alias(libs.plugins.daylog.android.library)
+    alias(libs.plugins.daylog.android.compose)
 }
 
 android {
