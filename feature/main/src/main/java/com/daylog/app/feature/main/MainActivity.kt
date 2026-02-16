@@ -1,39 +1,48 @@
 package com.daylog.app.feature.main
 
+import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.widget.ImageButton
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
-import com.daylog.app.core.common.BaseActivity
-import com.daylog.app.core.navigation.Navigator
-import com.daylog.app.feature.main.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.daylog.app.core.designsystem.theme.DayLogTheme
 import dagger.hilt.android.AndroidEntryPoint
-import jakarta.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding>() {
-
-    @Inject
-    lateinit var navigator: Navigator
-
-    override fun inflateBinding(layoutInflater: LayoutInflater): ActivityMainBinding {
-        return ActivityMainBinding.inflate(layoutInflater)
-    }
-
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
+        enableEdgeToEdge(
+            navigationBarStyle = SystemBarStyle.auto(
+                lightScrim = Color.TRANSPARENT, // 라이트 모드
+                darkScrim = Color.TRANSPARENT   // 다크 모드
+            )
+        )
 
-        val navController = navHostFragment.navController
-
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
-
-        bottomNav.setupWithNavController(navController)
+        setContent {
+            DayLogTheme{
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    MainScreen()
+                }
+            }
+        }
     }
 
+    @Preview(showBackground = true)
+    @Composable
+    fun s() {
+        MainScreen(
+        )
+    }
 }

@@ -7,15 +7,15 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
 private val DarkColorScheme = darkColorScheme(
-    primary = DaylogColor.DarkGray,
-    secondary =  DaylogColor.DarkGray,
+    primary = DaylogColor.Primary,
+    secondary =  DaylogColor.PrimaryDark,
     tertiary =DaylogColor.DarkGray,
     background = DaylogColor.White
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = DaylogColor.White,
-    secondary = DaylogColor.White,
+    primary = DaylogColor.Primary,
+    secondary =  DaylogColor.PrimaryDark,
     tertiary = DaylogColor.White,
     background = DaylogColor.White
 )
