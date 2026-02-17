@@ -12,7 +12,7 @@ android {
 dependencies {
     implementation(project(":feature:home"))
     implementation(project(":feature:calendar"))
-    implementation(project(":feature:profile"))
+    implementation(project(":feature:setting"))
     implementation(project(":core:navigation"))
 
     implementation(libs.androidx.core.ktx)

@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.daylog.app.feature.calendar.CalendarScreen
 import com.daylog.app.feature.home.HomeScreen
-import com.daylog.app.feature.profile.ProfileScreen
+import com.daylog.app.feature.setting.SettingScreen
 import kotlinx.collections.immutable.toImmutableList
 
 @Composable
@@ -36,13 +36,12 @@ fun MainScreen() {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding),
-            contentAlignment = Alignment.Center
+                .padding(innerPadding)
         ) {
             when (currentTab) {
                 MainTab.HOME -> HomeScreen()
                 MainTab.CALENDAR -> CalendarScreen()
-                MainTab.PROFILE -> ProfileScreen()
+                MainTab.PROFILE -> SettingScreen()
             }
         }
     }

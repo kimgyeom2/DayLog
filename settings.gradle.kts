@@ -54,7 +54,7 @@ include(
     ":feature:login",
     ":feature:home",
     ":feature:calendar",
-    ":feature:profile"
+    ":feature:setting"
 )
 
 
