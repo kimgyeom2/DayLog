@@ -1,6 +1,5 @@
 package com.daylog.app.core.designsystem.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
@@ -8,11 +7,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf
 
 private val DarkColorScheme = darkColorScheme(
-    primary = DaylogColor.Primary,
-    secondary =  DaylogColor.PrimaryDark,
+    primary = DaylogColor.PrimaryDark,
+    secondary =  DaylogColor.Primary,
     tertiary = DaylogColor.DarkGray,
-    background = DaylogColor.White,
-    surface = DaylogColor.PrimaryDark
+    background = DaylogColor.Black,
+    surface = DaylogColor.PrimaryDark,
+
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -23,7 +23,6 @@ private val LightColorScheme = lightColorScheme(
     surface = DaylogColor.White
 )
 
-val LocalDarkTheme = compositionLocalOf { true }
 
 
 object DayLogTheme {
@@ -38,7 +37,7 @@ object DayLogTheme {
 
 @Composable
 fun DayLogTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean,
     content: @Composable () -> Unit
 ) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme

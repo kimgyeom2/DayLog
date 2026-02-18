@@ -28,7 +28,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.daylog.app.core.designsystem.theme.DayLogTheme
 import com.daylog.app.core.designsystem.theme.DaylogColor
-import com.daylog.app.core.designsystem.theme.LocalDarkTheme
 import com.daylog.app.core.designsystem.theme.component.DayLogCard
 import com.daylog.app.feature.profile.R
 
@@ -36,7 +35,7 @@ import com.daylog.app.feature.profile.R
 internal fun LightDarkThemeCard(
     onChangeDarkTheme: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
-    darkTheme: Boolean = LocalDarkTheme.current,
+    darkTheme: Boolean,
 ) {
     DayLogCard(
         modifier = modifier
@@ -52,7 +51,7 @@ internal fun LightDarkThemeCard(
 
             Spacer(
                 modifier = Modifier
-                    .height(16.dp)
+                    .height(10.dp)
             )
 
             Row(
@@ -63,7 +62,7 @@ internal fun LightDarkThemeCard(
                     .padding(bottom = 12.dp)
             ) {
                 ThemeCard(
-                    selected = darkTheme.not(),
+                    selected = !darkTheme,
                     titleRes = R.string.light_mode,
                     themeCardColor = DaylogColor.White,
                     onClick = { onChangeDarkTheme(false) },
@@ -83,15 +82,7 @@ internal fun LightDarkThemeCard(
     }
 }
 
-@Preview
-@Composable
-private fun LightDarkThemeCardPreview() {
-    DayLogTheme {
-        LightDarkThemeCard(
-            onChangeDarkTheme = { },
-        )
-    }
-}
+
 
 @Composable
 private fun ThemeCard(
@@ -100,35 +91,27 @@ private fun ThemeCard(
     onClick: () -> Unit,
     themeCardColor: Color,
     modifier: Modifier = Modifier,
-    color: Color = MaterialTheme.colorScheme.surface,
-    contentColor: Color = MaterialTheme.colorScheme.onSurface,
 ) {
     Surface(
         onClick = onClick,
-        color = color,
-        contentColor = contentColor,
+        color = MaterialTheme.colorScheme.surface,
+        contentColor = MaterialTheme.colorScheme.onSurface,
         shape = DayLogTheme.shape.rounded12,
         modifier = modifier
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Surface(
                 shape = DayLogTheme.shape.rounded12,
                 color = themeCardColor,
-                border = BorderStroke(1.dp, MaterialTheme.colorScheme.onSurface).takeIf { selected },
-                modifier = Modifier
-                    .aspectRatio(1f)
+                border = if (selected) BorderStroke(2.dp, MaterialTheme.colorScheme.primary) else null,
+                modifier = Modifier.aspectRatio(1f)
             ) {
-                Box(
-                    contentAlignment = Alignment.BottomCenter,
-                ) {
+                Box(contentAlignment = Alignment.BottomCenter) {
                     Image(
                         painter = painterResource(id = R.drawable.img_android),
                         contentDescription = stringResource(titleRes),
                         contentScale = ContentScale.FillWidth,
-                        modifier = Modifier
-                            .fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
             }
@@ -136,16 +119,15 @@ private fun ThemeCard(
             Text(
                 text = stringResource(id = titleRes),
                 style = DayLogTheme.typography.titleSmallM140,
-                modifier = Modifier
-                    .padding(top = 16.dp, bottom = 8.dp)
+                modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
             )
 
             RadioButton(
                 selected = selected,
                 onClick = onClick,
                 colors = RadioButtonDefaults.colors(
-                    selectedColor = MaterialTheme.colorScheme.onSurface,
-                    unselectedColor = MaterialTheme.colorScheme.surfaceVariant,
+                    selectedColor = MaterialTheme.colorScheme.secondary,
+                    unselectedColor = MaterialTheme.colorScheme.outline,
                 )
             )
         }
@@ -155,7 +137,7 @@ private fun ThemeCard(
 @Preview
 @Composable
 private fun LightModeThemeCardPreview() {
-    DayLogTheme {
+    DayLogTheme(false) {
         ThemeCard(
             selected = true,
             titleRes = R.string.light_mode,
@@ -168,7 +150,7 @@ private fun LightModeThemeCardPreview() {
 @Preview
 @Composable
 private fun DarkModeThemeCardPreview() {
-    DayLogTheme {
+    DayLogTheme(true) {
         ThemeCard(
             selected = true,
             titleRes = R.string.dark_mode,

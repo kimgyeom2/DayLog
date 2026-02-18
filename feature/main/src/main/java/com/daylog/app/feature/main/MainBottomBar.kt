@@ -81,7 +81,7 @@ private fun RowScope.MainBottomBarItem(
     val colorScheme = MaterialTheme.colorScheme
 
     val color = if (selected) colorScheme.secondary
-    else colorScheme.background
+    else colorScheme.outline
 
     Box(
         modifier = Modifier
@@ -89,7 +89,7 @@ private fun RowScope.MainBottomBarItem(
             .fillMaxHeight()
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
-                indication = null, // 리플 효과 제거 (디자인에 따라 추가 가능)
+                indication = null,
                 onClick = onClick
             ),
         contentAlignment = Alignment.Center

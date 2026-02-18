@@ -57,7 +57,8 @@ hiltNavigationCompose = "1.2.0"
 # https://github.com/twitter/compose-rules
 detektTwitterComposeRule = "0.0.26"
 
-
+# Room
+room = "2.6.1"
 
 ## Kotlin
 # https://github.com/JetBrains/kotlin
@@ -234,6 +235,11 @@ androidx-navigation-runtime-android = { group = "androidx.navigation", name = "n
 fragment = { group = "androidx.fragment", name = "fragment", version.ref = "fragmentVersion" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 androidx-navigation-compose-jvmstubs = { group = "androidx.navigation", name = "navigation-compose-jvmstubs", version.ref = "navigationComposeJvmstubs" }
+
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+
 
 [bundles]
 

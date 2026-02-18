@@ -33,7 +33,7 @@ class LoginActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setContent {
-            DayLogTheme {
+            DayLogTheme(false) {
                 val context = LocalContext.current
 
                 LaunchedEffect(Unit) {

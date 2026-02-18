@@ -9,15 +9,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.daylog.app.feature.calendar.CalendarScreen
 import com.daylog.app.feature.home.HomeScreen
 import com.daylog.app.feature.setting.SettingScreen
+import com.daylog.app.feature.setting.SettingViewModel
 import kotlinx.collections.immutable.toImmutableList
 
 @Composable
-fun MainScreen() {
+fun MainScreen(viewModel: SettingViewModel) {
 
     var currentTab by remember { mutableStateOf(MainTab.HOME) }
 
@@ -41,7 +41,7 @@ fun MainScreen() {
             when (currentTab) {
                 MainTab.HOME -> HomeScreen()
                 MainTab.CALENDAR -> CalendarScreen()
-                MainTab.PROFILE -> SettingScreen()
+                MainTab.PROFILE -> SettingScreen(viewModel)
             }
         }
     }
