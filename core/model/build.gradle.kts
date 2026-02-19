@@ -5,9 +5,5 @@ plugins {
 }
 
 android {
-    setNamespace("core.domain")
-}
-
-dependencies {
-    implementation(project(":core:model"))
+    setNamespace("core.model")
 }

@@ -45,7 +45,8 @@ include(
     ":core:data",
     ":core:common",
     ":core:navigation",
-    ":core:network"
+    ":core:network",
+    ":core:model"
 )
 
 // Feature
@@ -57,8 +58,5 @@ include(
     ":feature:setting"
 )
 
-
-
-include(":app:baselineprofile")
-
 include(":baselineprofile")
+
