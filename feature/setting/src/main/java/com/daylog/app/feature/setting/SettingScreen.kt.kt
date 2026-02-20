@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.daylog.app.core.designsystem.theme.DayLogTheme
 import com.daylog.app.core.designsystem.theme.DaylogColor
 import com.daylog.app.feature.setting.component.LightDarkThemeCard
+import com.daylog.app.feature.setting.component.ProfileCard
 
 @Composable
 fun SettingScreen(
@@ -42,6 +43,7 @@ private fun SettingScreenContent(
             .padding(12.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
+        ProfileCard()
         LightDarkThemeCard(
             darkTheme = darkTheme,
             onChangeDarkTheme = onChangeDarkTheme,

@@ -28,6 +28,23 @@ fun DayLogCard(
 }
 
 @Composable
+fun TodayCard(
+    modifier: Modifier = Modifier,
+    color: Color = MaterialTheme.colorScheme.primary,
+    contentColor: Color = MaterialTheme.colorScheme.onSurface,
+    content: @Composable () -> Unit,
+) {
+    Surface(
+        modifier = modifier.fillMaxWidth(),
+        color = color,
+        contentColor = contentColor,
+        shape = RoundedCornerShape(32.dp),
+        shadowElevation = 2.dp,
+        content = content,
+    )
+}
+
+@Composable
 fun DayLogCard(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,

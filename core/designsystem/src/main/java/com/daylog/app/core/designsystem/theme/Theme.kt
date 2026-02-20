@@ -11,8 +11,7 @@ private val DarkColorScheme = darkColorScheme(
     secondary =  DaylogColor.Primary,
     tertiary = DaylogColor.DarkGray,
     background = DaylogColor.Black,
-    surface = DaylogColor.PrimaryDark,
-
+    surface = DaylogColor.PrimaryDark
 )
 
 private val LightColorScheme = lightColorScheme(
