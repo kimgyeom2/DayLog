@@ -7,9 +7,9 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 
 @Stable
-data class KnightsShape(
+data class DayLogShape(
     val chip: Shape = RoundedCornerShape(10.dp),
     val rounded12: Shape = RoundedCornerShape(12.dp),
 )
 
-val LocalShape = staticCompositionLocalOf { KnightsShape() }
+val LocalShape = staticCompositionLocalOf { DayLogShape() }

@@ -1,6 +1,5 @@
 package com.daylog.app.feature.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.daylog.app.core.domain.usecase.GetDiaryUseCase
@@ -20,12 +19,12 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val insertDiaryUseCase : InsertDiaryUseCase,
-    private val getDiaryUseCase : GetDiaryUseCase
+    getDiaryUseCase : GetDiaryUseCase
 ) : ViewModel() {
 
-    fun insertDiary() {
+    fun insertDiary(diary: Diary) {
         viewModelScope.launch {
-            insertDiaryUseCase.invoke()
+            insertDiaryUseCase.invoke(diary)
         }
     }
 

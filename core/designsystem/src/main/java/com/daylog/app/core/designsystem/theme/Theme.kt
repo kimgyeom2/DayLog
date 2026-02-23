@@ -4,14 +4,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.compositionLocalOf
 
 private val DarkColorScheme = darkColorScheme(
     primary = DaylogColor.PrimaryDark,
     secondary =  DaylogColor.Primary,
-    tertiary = DaylogColor.DarkGray,
+    tertiary = DaylogColor.White,
     background = DaylogColor.Black,
-    surface = DaylogColor.PrimaryDark
+    surface = DaylogColor.PrimaryDark,
+    onSurface = DaylogColor.White
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -19,7 +19,8 @@ private val LightColorScheme = lightColorScheme(
     secondary =  DaylogColor.PrimaryDark,
     tertiary = DaylogColor.White,
     background = DaylogColor.White,
-    surface = DaylogColor.White
+    surface = DaylogColor.White,
+    onSurface = DaylogColor.Black
 )
 
 
@@ -29,7 +30,7 @@ object DayLogTheme {
         @Composable
         get() = LocalTypography.current
 
-    val shape: KnightsShape
+    val shape: DayLogShape
         @Composable
         get() = LocalShape.current
 }

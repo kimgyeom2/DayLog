@@ -7,7 +7,10 @@ data class TodayState(
 )
 
 enum class Mood(val emoji: String, val text: String) {
-    HAPPY("😊", "기분 좋아요"),
-    NORMAL("😐", "평범해요"),
-    SAD("😢", "조금 우울해요")
+    HAPPY("😊", "행복"),
+    EXCITED("🤩", "신남"),
+    CALM("😌", "평온"),
+    SAD("🥲", "속상"),
+    ANGRY("😤", "화남"),
+    SLEEPY("😴", "졸림")
 }
