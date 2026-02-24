@@ -18,5 +18,4 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     
     implementation(project(":core:navigation"))
-    implementation(project(":core:domain"))
 }

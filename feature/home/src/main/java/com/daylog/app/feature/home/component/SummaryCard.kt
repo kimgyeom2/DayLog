@@ -16,7 +16,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import com.daylog.app.core.designsystem.R
 import com.daylog.app.core.designsystem.theme.DaylogColor
 import com.daylog.app.core.designsystem.theme.component.TodayCard
 import com.daylog.app.core.model.TodayState
@@ -25,7 +28,8 @@ import com.daylog.app.core.model.TodayState
 fun SummaryCard(
     modifier: Modifier = Modifier,
     todayState: TodayState,
-    dogName: String = "뭉치",
+    nickName: String = "뭉치",
+    profileUri : String?
 ) {
     TodayCard(
         modifier = modifier
@@ -38,18 +42,19 @@ fun SummaryCard(
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // 프로필 이미지 자리
-                Box(
+                AsyncImage(
+                    model = profileUri ?: R.drawable.foot_print,
+                    contentDescription = null,
                     modifier = Modifier
                         .size(60.dp)
-                        .clip(CircleShape)
-                        .background(DaylogColor.LightGray)
+                        .clip(CircleShape),
+                    contentScale = ContentScale.Crop
                 )
 
                 Spacer(Modifier.width(8.dp))
 
                 Text(
-                    text = "오늘의 $dogName 🐶",
+                    text = "오늘의 $nickName 🐶",
                     style = MaterialTheme.typography.titleLarge
                 )
             }

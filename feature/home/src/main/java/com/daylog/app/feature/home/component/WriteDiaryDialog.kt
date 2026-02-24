@@ -1,5 +1,6 @@
 package com.daylog.app.feature.home.component
 
+import android.content.Context
 import android.net.Uri
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -36,15 +37,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.daylog.app.core.designsystem.theme.DaylogColor
 import com.daylog.app.core.model.Diary
 import com.daylog.app.core.model.Mood
+import java.io.File
+import java.io.FileOutputStream
 import java.time.LocalDate
 
 @Composable
 fun WriteDiaryDialog(
+    context: Context,
     onDismiss: () -> Unit,
     onSave: (Diary) -> Unit,
     noContent: ()-> Unit
@@ -73,13 +78,18 @@ fun WriteDiaryDialog(
                         noContent()
                         return@TextButton
                     }
+
+                    val savedImageUri = imageUri?.let {
+                        saveImageToInternalStorage(context, it)
+                    }
+
                     val diary = Diary(
                         date = LocalDate.now().toString(),
                         mood = selectedMood,
                         content = content,
                         walkCount = walkCount.toIntOrNull() ?: 0,
                         snackCount = snackCount.toIntOrNull() ?: 0,
-                        imageUri = imageUri?.toString()
+                        imageUri = savedImageUri
                     )
                     onSave(diary)
                 }
@@ -239,4 +249,23 @@ fun MoodChip(
             )
         }
     }
+}
+
+fun saveImageToInternalStorage(
+    context: Context,
+    uri: Uri
+): String {
+
+    val inputStream = context.contentResolver.openInputStream(uri)
+
+    val fileName = "diary_${System.currentTimeMillis()}.jpg"
+    val file = File(context.filesDir, fileName)
+
+    inputStream?.use { input ->
+        FileOutputStream(file).use { output ->
+            input.copyTo(output)
+        }
+    }
+
+    return file.toURI().toString()
 }

@@ -60,3 +60,4 @@ include(
 
 include(":baselineprofile")
 
+include(":core:datastore")

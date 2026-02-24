@@ -3,6 +3,8 @@ package com.daylog.app.feature.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.daylog.app.core.domain.usecase.GetDiaryUseCase
+import com.daylog.app.core.domain.usecase.GetNickNameUseCase
+import com.daylog.app.core.domain.usecase.GetProfileUriUseCase
 import com.daylog.app.core.domain.usecase.InsertDiaryUseCase
 import com.daylog.app.core.model.Diary
 import com.daylog.app.core.model.TodayState
@@ -18,16 +20,24 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
+    getNickNameUseCase: GetNickNameUseCase,
+    getProfileUriUseCase: GetProfileUriUseCase,
+    getDiaryUseCase : GetDiaryUseCase,
     private val insertDiaryUseCase : InsertDiaryUseCase,
-    getDiaryUseCase : GetDiaryUseCase
 ) : ViewModel() {
+    val nickName = getNickNameUseCase()
+        .stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(),
+            "뭉치"
+        )
 
-    fun insertDiary(diary: Diary) {
-        viewModelScope.launch {
-            insertDiaryUseCase.invoke(diary)
-        }
-    }
-
+    val profileUri = getProfileUriUseCase()
+        .stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(),
+            null
+        )
 
     val diaries: StateFlow<List<Diary>> =
         getDiaryUseCase.invoke()
@@ -56,4 +66,10 @@ class HomeViewModel @Inject constructor(
             started = SharingStarted.WhileSubscribed(5000),
             initialValue = null
         )
+
+    fun insertDiary(diary: Diary) {
+        viewModelScope.launch {
+            insertDiaryUseCase.invoke(diary)
+        }
+    }
 }

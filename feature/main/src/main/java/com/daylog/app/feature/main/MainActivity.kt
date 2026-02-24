@@ -47,12 +47,12 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    @SuppressLint("ViewModelConstructorInComposable")
-    @Preview(showBackground = true)
-    @Composable
-    fun PreviewMain() {
-        MainScreen(
-            SettingViewModel()
-        )
-    }
+//    @SuppressLint("ViewModelConstructorInComposable")
+//    @Preview(showBackground = true)
+//    @Composable
+//    fun PreviewMain() {
+//        MainScreen(
+//            SettingViewModel()
+//        )
+//    }
 }

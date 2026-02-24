@@ -1,49 +1,38 @@
 package com.daylog.app.feature.setting.component
 
-import androidx.annotation.StringRes
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
+
+import android.util.Log
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.RadioButtonDefaults
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.daylog.app.core.designsystem.theme.DayLogTheme
-import com.daylog.app.core.designsystem.theme.DaylogColor
+import coil.compose.AsyncImage
 import com.daylog.app.core.designsystem.theme.component.DayLogCard
-import com.daylog.app.feature.profile.R
+import com.daylog.app.core.designsystem.R
 
 @Composable
 fun ProfileCard(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    dogName: String = "뭉치",
+    nickName: String = "뭉치",
+    profileUri:String? = null
 ) {
     DayLogCard(
         modifier = modifier
             .padding(top = 20.dp)
+            .clickable { onClick() }
     ) {
         Column(
             modifier = Modifier.padding(20.dp)
@@ -51,18 +40,23 @@ fun ProfileCard(
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                if (profileUri != null) {
+                    Log.e("gyeom",profileUri)
+                }
                 // 프로필 이미지 자리
-                Box(
+                AsyncImage(
+                    model = profileUri ?: R.drawable.foot_print,
+                    contentDescription = null,
                     modifier = Modifier
                         .size(60.dp)
-                        .clip(CircleShape)
-                        .background(DaylogColor.LightGray)
+                        .clip(CircleShape),
+                    contentScale = ContentScale.Crop
                 )
 
                 Spacer(Modifier.width(8.dp))
 
                 Text(
-                    text = "$dogName 🐶",
+                    text = "$nickName 🐶",
                     style = MaterialTheme.typography.titleLarge
                 )
             }
