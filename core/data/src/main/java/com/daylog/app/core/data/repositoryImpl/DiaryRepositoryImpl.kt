@@ -14,6 +14,7 @@ import com.daylog.app.core.network.request.SignUpRequest
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import java.time.LocalDate
 
 class DiaryRepositoryImpl @Inject constructor(
     private val dataBase: AppDataBase
@@ -29,4 +30,7 @@ class DiaryRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getCalendarData(start: String, end: String): List<Diary> {
+        return dataBase.diaryDao().getCalendarData(start,end).map { it.toDiary() }
+    }
 }

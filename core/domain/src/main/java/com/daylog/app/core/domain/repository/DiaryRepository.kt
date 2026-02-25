@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 interface DiaryRepository {
     suspend fun insert(diary: Diary)
     fun getDiaries(): Flow<List<Diary>>
+    suspend fun getCalendarData(start: String,end: String): List<Diary>
 }

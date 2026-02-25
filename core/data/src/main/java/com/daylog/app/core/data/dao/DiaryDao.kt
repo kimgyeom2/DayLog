@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.daylog.app.core.data.entity.DiaryEntity
 import kotlinx.coroutines.flow.Flow
+import java.time.LocalDate
 
 @Dao
 interface  DiaryDao{
@@ -14,4 +15,7 @@ interface  DiaryDao{
 
     @Query("SELECT * FROM diary ORDER BY createdAt DESC")
     fun getDiaries(): Flow<List<DiaryEntity>>
+
+    @Query("""SELECT * FROM diary WHERE date BETWEEN :start AND :end""")
+    suspend fun getCalendarData(start: String,end: String): List<DiaryEntity>
 }

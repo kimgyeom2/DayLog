@@ -29,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import com.daylog.app.core.designsystem.theme.DaylogColor
 import kotlinx.collections.immutable.ImmutableList
 
 @Composable
@@ -81,7 +82,7 @@ private fun RowScope.MainBottomBarItem(
     val colorScheme = MaterialTheme.colorScheme
 
     val color = if (selected) colorScheme.secondary
-    else colorScheme.outline
+    else DaylogColor.Gray
 
     Box(
         modifier = Modifier
