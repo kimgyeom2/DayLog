@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.daylog.app.core.designsystem.theme.component.CalendarCard
 import com.daylog.app.core.designsystem.theme.component.DayLogCard
 import com.daylog.app.core.model.MonthStats
 import com.daylog.app.core.model.Mood
@@ -209,7 +210,7 @@ fun MonthStatsCard(
     stats: MonthStats
 ) {
 
-    DayLogCard {
+    CalendarCard {
 
         Column(
             modifier = Modifier.padding(16.dp),

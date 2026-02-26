@@ -2,8 +2,8 @@ package com.daylog.app.core.model
 
 data class TodayState(
     val mood: Mood,
-    val walkCount: Int,
-    val snackCount: Int
+    val walkCount: String,
+    val snackCount: String
 )
 
 enum class Mood(val emoji: String, val text: String) {

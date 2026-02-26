@@ -8,11 +8,7 @@ import com.daylog.app.core.model.Mood
 
 @Entity(tableName = "diary")
 data class DiaryEntity(
-
-    @PrimaryKey(autoGenerate = true)
-    val id: Long = 0L,
-
-    // 작성 날짜 (YYYY-MM-DD)
+    @PrimaryKey
     val date: String,
 
     // (최신순 정렬용)
@@ -22,10 +18,10 @@ data class DiaryEntity(
     val mood: Mood,
 
     // 산책 횟수
-    val walkCount: Int,
+    val walkCount: String,
 
     // 간식 개수
-    val snackCount: Int,
+    val snackCount: String,
 
     // 내용
     val content: String,

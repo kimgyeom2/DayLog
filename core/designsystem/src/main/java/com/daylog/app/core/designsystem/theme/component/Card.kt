@@ -45,23 +45,19 @@ fun TodayCard(
 }
 
 @Composable
-fun DayLogCard(
+fun CalendarCard(
     modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    onClick: () -> Unit = {},
-    elevation: Dp = 2.dp,
     color: Color = MaterialTheme.colorScheme.surface,
     contentColor: Color = MaterialTheme.colorScheme.onSurface,
     content: @Composable () -> Unit,
 ) {
     Surface(
-        onClick = onClick,
-        enabled = enabled,
         modifier = modifier.fillMaxWidth(),
         color = color,
         contentColor = contentColor,
-        shape = RoundedCornerShape(12.dp),
-        shadowElevation = elevation,
+        shape = RoundedCornerShape(8.dp),
+        shadowElevation = 1.dp,
         content = content,
     )
 }
+

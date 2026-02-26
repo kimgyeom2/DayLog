@@ -45,7 +45,7 @@ fun ProfileCard(
                 }
                 // 프로필 이미지 자리
                 AsyncImage(
-                    model = profileUri ?: R.drawable.foot_print,
+                    model = profileUri ?: R.drawable.ic_profile,
                     contentDescription = null,
                     modifier = Modifier
                         .size(60.dp)

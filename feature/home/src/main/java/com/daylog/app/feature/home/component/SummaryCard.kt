@@ -43,7 +43,7 @@ fun SummaryCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 AsyncImage(
-                    model = profileUri ?: R.drawable.foot_print,
+                    model = profileUri ?: R.drawable.ic_profile,
                     contentDescription = null,
                     modifier = Modifier
                         .size(60.dp)

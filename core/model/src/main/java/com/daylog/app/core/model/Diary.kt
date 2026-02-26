@@ -4,8 +4,8 @@ data class Diary(
     val date: String,
     val createdAt: Long = System.currentTimeMillis(),
     val mood: Mood,
-    val walkCount: Int,
-    val snackCount: Int,
+    val walkCount: String,
+    val snackCount: String,
     val content: String,
     val imageUri: String? = null
 )

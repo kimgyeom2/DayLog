@@ -12,7 +12,8 @@ private val DarkColorScheme = darkColorScheme(
     background = DaylogColor.Black,
     surface = DaylogColor.PrimaryDark,
     onSurface = DaylogColor.White,
-    outline = DaylogColor.White
+    outline = DaylogColor.LightGray,
+    inverseOnSurface = DaylogColor.Black
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -22,7 +23,8 @@ private val LightColorScheme = lightColorScheme(
     background = DaylogColor.White,
     surface = DaylogColor.White,
     onSurface = DaylogColor.Black,
-    outline = DaylogColor.LightGray
+    outline = DaylogColor.LightGray,
+    inverseOnSurface = DaylogColor.Black
 )
 
 

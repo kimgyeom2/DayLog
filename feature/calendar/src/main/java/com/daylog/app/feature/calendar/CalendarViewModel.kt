@@ -61,9 +61,9 @@ class CalendarViewModel @Inject constructor(
                     .groupingBy { it.mood }
                     .eachCount(),
 
-                walkTotal = diaries.sumOf { it.walkCount },
+                walkTotal = diaries.sumOf { it.walkCount.toInt() },
 
-                snackTotal = diaries.sumOf { it.snackCount }
+                snackTotal = diaries.sumOf { it.snackCount.toInt()  }
             )
 
         }.stateIn(

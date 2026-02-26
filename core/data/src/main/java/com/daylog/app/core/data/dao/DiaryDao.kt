@@ -18,4 +18,7 @@ interface  DiaryDao{
 
     @Query("""SELECT * FROM diary WHERE date BETWEEN :start AND :end""")
     suspend fun getCalendarData(start: String,end: String): List<DiaryEntity>
+
+    @Query("DELETE FROM diary WHERE date = :date")
+    suspend fun deleteDiary(date: String)
 }

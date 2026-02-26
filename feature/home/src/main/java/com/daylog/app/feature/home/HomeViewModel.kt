@@ -2,6 +2,7 @@ package com.daylog.app.feature.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.daylog.app.core.domain.usecase.DeleteDiaryUseCase
 import com.daylog.app.core.domain.usecase.GetDiaryUseCase
 import com.daylog.app.core.domain.usecase.GetNickNameUseCase
 import com.daylog.app.core.domain.usecase.GetProfileUriUseCase
@@ -24,6 +25,7 @@ class HomeViewModel @Inject constructor(
     getProfileUriUseCase: GetProfileUriUseCase,
     getDiaryUseCase : GetDiaryUseCase,
     private val insertDiaryUseCase : InsertDiaryUseCase,
+    private val deleteDiaryUseCase: DeleteDiaryUseCase
 ) : ViewModel() {
     val nickName = getNickNameUseCase()
         .stateIn(
@@ -70,6 +72,12 @@ class HomeViewModel @Inject constructor(
     fun insertDiary(diary: Diary) {
         viewModelScope.launch {
             insertDiaryUseCase.invoke(diary)
+        }
+    }
+
+    fun deleteDiary(diary: Diary) {
+        viewModelScope.launch {
+            deleteDiaryUseCase.invoke(diary.date)
         }
     }
 }

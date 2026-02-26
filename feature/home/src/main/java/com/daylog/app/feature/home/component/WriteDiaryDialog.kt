@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.AlertDialog
@@ -38,6 +39,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.daylog.app.core.designsystem.theme.DaylogColor
@@ -46,25 +48,30 @@ import com.daylog.app.core.model.Mood
 import java.io.File
 import java.io.FileOutputStream
 import java.time.LocalDate
+import androidx.core.net.toUri
 
 @Composable
 fun WriteDiaryDialog(
     context: Context,
+    diary: Diary?,
     onDismiss: () -> Unit,
     onSave: (Diary) -> Unit,
     noContent: ()-> Unit
 ) {
-    var content by remember { mutableStateOf("") }
-    var walkCount by remember { mutableStateOf("") }
-    var snackCount by remember { mutableStateOf("") }
-    var selectedMood by remember { mutableStateOf(Mood.HAPPY) }
-    var imageUri by remember { mutableStateOf<Uri?>(null) }
+    var content by remember {  mutableStateOf(diary?.content ?: "") }
+    var walkCount by remember {mutableStateOf(diary?.walkCount ?: "") }
+    var snackCount by remember { mutableStateOf(diary?.snackCount ?: "") }
+    var selectedMood by remember { mutableStateOf(diary?.mood ?: Mood.HAPPY) }
+    var imageUri by remember(diary) {
+        mutableStateOf(
+            diary?.imageUri?.toUri()
+        )
+    }
 
     val imagePickerLauncher =
         rememberLauncherForActivityResult(
             contract = ActivityResultContracts.GetContent()
         ) { uri: Uri? ->
-            Log.e("gyeom",uri.toString())
             imageUri = uri
         }
 
@@ -87,19 +94,19 @@ fun WriteDiaryDialog(
                         date = LocalDate.now().toString(),
                         mood = selectedMood,
                         content = content,
-                        walkCount = walkCount.toIntOrNull() ?: 0,
-                        snackCount = snackCount.toIntOrNull() ?: 0,
+                        walkCount = walkCount,
+                        snackCount = snackCount,
                         imageUri = savedImageUri
                     )
                     onSave(diary)
                 }
             ) {
-                Text("저장", color = MaterialTheme.colorScheme.onSurface)
+                Text("저장", color = MaterialTheme.colorScheme.inverseOnSurface)
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("취소", color = MaterialTheme.colorScheme.onSurface)
+                Text("취소", color = MaterialTheme.colorScheme.inverseOnSurface)
             }
         },
         text = {
@@ -159,7 +166,10 @@ fun WriteDiaryDialog(
                         onValueChange = { walkCount = it },
                         label = { Text("🐾 산책") },
                         modifier = Modifier.weight(1f),
-                        singleLine = true
+                        singleLine = true,
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Number
+                        )
                     )
 
                     OutlinedTextField(
@@ -167,7 +177,10 @@ fun WriteDiaryDialog(
                         onValueChange = { snackCount = it },
                         label = { Text("🍖 간식") },
                         modifier = Modifier.weight(1f),
-                        singleLine = true
+                        singleLine = true,
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Number
+                        )
                     )
                 }
             }
