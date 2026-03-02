@@ -89,16 +89,14 @@ fun DiaryFeedItem(
             ){
 
                 Text(
-                    text = "${diary.date} 뭉치",
+                    text = diary.date,
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold
                 )
 
-                Spacer(Modifier.height(4.dp))
-
                 Text(
                     text = "${diary.mood.emoji} ${diary.mood.text}",
-                    style = MaterialTheme.typography.bodyMedium
+                    style = MaterialTheme.typography.bodyLarge
                 )
 
                 Spacer(Modifier.height(4.dp))
@@ -124,7 +122,7 @@ fun DiaryFeedItem(
                     Text("🍖 ${diary.snackCount}")
                 }
 
-                Spacer(Modifier.height(6.dp))
+                Spacer(Modifier.height(3.dp))
 
                 Text(
                     text = diary.content,

@@ -64,7 +64,7 @@ fun CalendarScreen(
             moodMap = moodMap,
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(max = 250.dp)
+                .heightIn(max = 270.dp)
         )
 
         Spacer(Modifier.height(12.dp))
