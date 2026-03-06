@@ -39,7 +39,7 @@ fun MainScreen(viewModel: SettingViewModel) {
                 .padding(innerPadding)
         ) {
             when (currentTab) {
-                MainTab.HOME -> HomeScreen<Any>()
+                MainTab.HOME -> HomeScreen()
                 MainTab.CALENDAR -> CalendarScreen()
                 MainTab.PROFILE -> SettingScreen(viewModel)
             }

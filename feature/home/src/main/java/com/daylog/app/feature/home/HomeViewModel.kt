@@ -10,8 +10,10 @@ import com.daylog.app.core.domain.usecase.InsertDiaryUseCase
 import com.daylog.app.core.model.Diary
 import com.daylog.app.core.model.TodayState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -42,12 +44,21 @@ class HomeViewModel @Inject constructor(
         )
 
     val diaries: StateFlow<List<Diary>> =
-        getDiaryUseCase.invoke()
-            .stateIn(
-                scope = viewModelScope,
-                started = SharingStarted.WhileSubscribed(5000),
-                initialValue = emptyList()
-            )
+        combine(
+            getDiaryUseCase.invoke(),
+            sortOrder
+        ) { diaries, order ->
+
+            when (order) {
+                SortOrder.LATEST -> diaries.sortedByDescending { it.date }
+                SortOrder.OLDEST -> diaries.sortedBy { it.date }
+            }
+
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList()
+        )
 
     val todayState: StateFlow<TodayState?> =
         diaries.map { list ->
@@ -80,4 +91,15 @@ class HomeViewModel @Inject constructor(
             deleteDiaryUseCase.invoke(diary.date)
         }
     }
+
+    fun changeSort(order: SortOrder) {
+        sortOrder.value = order
+    }
 }
+
+enum class SortOrder {
+    LATEST,
+    OLDEST
+}
+
+private val sortOrder = MutableStateFlow(SortOrder.LATEST)
